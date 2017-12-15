@@ -19,8 +19,12 @@ public class UserDAO {
 	}
 	
 	public User create(User user) {
-		//TODO: A faire
-		return null;
+		user.setId(1);
+		return user;
+	}
+
+	public User find(Integer id) {
+		return new User(id, "sportelli" + id, "");
 	}
 	
 }

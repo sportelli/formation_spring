@@ -16,5 +16,13 @@ public class UserServices {
 	public List<User> getAll(){
 		return userDAO.findAll();
 	}
+
+	public User getUserById(Integer id) {
+		return userDAO.find(id);
+	}
+
+	public User create(User user) {
+		return userDAO.create(user);
+	}
 	
 }

@@ -1,0 +1,87 @@
+{
+	"info": {
+		"name": "Spring JSON",
+		"_postman_id": "380a5411-c52a-09cf-15a5-b83d37334990",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE USER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"login\" : \"monlogin\",\n\t\"password\" : \"monpass\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/springmvc/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"springmvc",
+						"users",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET ONE USER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/springmvc/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"springmvc",
+						"users",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL USERS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/springmvc/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"springmvc",
+						"users",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
