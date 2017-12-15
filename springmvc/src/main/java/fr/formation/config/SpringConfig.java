@@ -3,6 +3,9 @@ package fr.formation.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -17,6 +20,7 @@ import fr.formation.interceptors.LoggingInterceptor;
 @Configuration
 @EnableWebMvc
 @ComponentScan("fr.formation")
+@EnableTransactionManagement
 public class SpringConfig extends WebMvcConfigurerAdapter{
 	
 	// Gestion de la vue
@@ -43,6 +47,19 @@ public class SpringConfig extends WebMvcConfigurerAdapter{
 						.excludePathPatterns("/page1.htm"); // sauf page1.htm
 	}
 
-	//TODO : Appeler le gestionnaire de session d'Hibernate
+	@Bean
+	public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {
+		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
+		factoryBean.setPackagesToScan("fr.formation.model");
+		factoryBean.setPersistenceUnitName("LOCAL_PERSISTENCE");
+		return factoryBean;
+	}
+	
+	@Bean
+	public JpaTransactionManager geJpaTransactionManager() {
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(getEntityManagerFactoryBean().getObject());
+		return transactionManager;
+	}
 
 }

@@ -8,7 +8,7 @@ import fr.formation.view.exceptions.UserUnknownException;
 @ControllerAdvice
 public class MyControllerAdvice {
 
-	@ExceptionHandler(Exception.class)
+//	@ExceptionHandler(Exception.class)
 	public String gererMonException(Exception e) {
 		return "error";
 	}	

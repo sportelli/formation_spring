@@ -1,9 +1,9 @@
 package fr.formation.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import fr.formation.dao.UserDAO;
 import fr.formation.model.User;
 
@@ -21,6 +21,7 @@ public class UserServices {
 		return userDAO.find(id);
 	}
 
+	@Transactional
 	public User create(User user) {
 		return userDAO.create(user);
 	}
