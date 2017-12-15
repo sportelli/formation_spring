@@ -8,11 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-Users : 
-<ul>
-	<c:forEach items="${users}" var="u">
-		<li>${u.login} (#${u.id})</li>
-	</c:forEach>
-</ul>
+
+	<form method="post" action="page4.htm">
+		<input type="text" name="prenom"/>
+		<input type="submit"/>
+	</form>
+
 </body>
 </html>
