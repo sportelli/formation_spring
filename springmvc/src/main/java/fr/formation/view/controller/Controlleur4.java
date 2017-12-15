@@ -23,4 +23,20 @@ public class Controlleur4 {
 		return "page5";
 	}
 	
+	@GetMapping("/page6.htm")
+	public String page6() {
+		Integer a = 2/0;
+		return "page6";
+	}
+	
+	@GetMapping("/page7.htm")
+	public String page7() {
+		return "forward:/page5.htm";
+	}
+
+	@GetMapping("/page8.htm")
+	public String page8() {
+		return "redirect:/page5.htm";
+	}
+	
 }
