@@ -6,9 +6,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import fr.formation.interceptors.CalculateTimeInterceptor;
+import fr.formation.interceptors.LoggingInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -29,8 +33,16 @@ public class SpringConfig extends WebMvcConfigurerAdapter{
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-	
-	//TODO : Gérer les intercepteurs
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		// On ajoute notre LoggingInterceptor au registre des intercepteurs
+		registry.addInterceptor(new LoggingInterceptor());
+		registry.addInterceptor(new CalculateTimeInterceptor())
+						.addPathPatterns("/*.htm") // Se lance sur tous les .htm
+						.excludePathPatterns("/page1.htm"); // sauf page1.htm
+	}
+
 	//TODO : Appeler le gestionnaire de session d'Hibernate
 
 }
